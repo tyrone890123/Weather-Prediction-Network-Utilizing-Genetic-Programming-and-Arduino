@@ -83,7 +83,7 @@ The start of the pseudocode mainly consists of the initializations to the differ
 <br>
 <br>
 <p align="center">
-<img width="400" src="https://raw.githubusercontent.com/tyrone890123/Weather-Prediction-Network-Utilizing-Genetic-Programming-and-Arduino/main/Assets/Pseudocode.png"> 
+<img width="350" src="https://raw.githubusercontent.com/tyrone890123/Weather-Prediction-Network-Utilizing-Genetic-Programming-and-Arduino/main/Assets/Pseudocode.png"> 
 </p>
 
 <h2 id="contributors">Contributors</h2>

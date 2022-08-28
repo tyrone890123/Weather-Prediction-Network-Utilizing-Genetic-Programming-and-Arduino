@@ -45,7 +45,8 @@ The microprocessor to be used in the development of the system is the Arduino Un
 <h2 id="bd">Block Diagram</h2>
 
 The block diagram of the system can be seen below, the heart of the system is the Arduino Uno, in which the inputs to the system are from the DHT11 sensor and the DS1302 RTC module, the user can input into the system through the button switch and the potentiometer. The outputs of the system can be seen in the form of the LED and I2C LCD components.
-
+<br>
+<br>
 <p align="center">
 <img width="400" src="https://raw.githubusercontent.com/tyrone890123/Weather-Prediction-Network-Utilizing-Genetic-Programming-and-Arduino/main/Assets/Diagram.png"> 
 </p>
@@ -72,14 +73,16 @@ The block diagram of the system can be seen below, the heart of the system is th
 
 <h2 id="pm">Pin Mapping</h2>
 The pin mapping of the system can be seen in the image below. PORT D2 and D3 are used for the push buttons. Moreover, PORT D4 is used for the DHT11 sensor and D5 to D7 are used for the DS1302 RTC module. Lastly, PORT B1 is used for the LED rain indicator. PORT C0 is used for the input of the potentiometer as the value needs to be converted by the ADC. PORT C4 and C5 are used for the SDA and SCL lines of the I2C LCD.
-
+<br>
+<br>
 <p align="center">
 <img width="500" src="https://raw.githubusercontent.com/tyrone890123/Weather-Prediction-Network-Utilizing-Genetic-Programming-and-Arduino/main/Assets/Pin%20Mapping.jpg"> 
 </p>
 
 <h2 id="psd">Pseudocode</h2>
 The start of the pseudocode mainly consists of the initializations to the different components that would be used, mainly the LCD, DHT, RTC, buttons, potentiometer, LED, and the various variables that would be used to keep track of the data or which sequence needs to occur. Once the while loop begins, the potentiometer is read and is used alongside the initial threshold which would indicate whether to inform the user through an LED sequence. Button presses from the user are also checked, this is to determine which screen to display, whether its from the DHT11 or the RTC. The DTH11 data is being collected regardless of whether or not the screen is on the DHT11 data or RTC, this is to allow for the system to be able to warn the user if there is incoming rain even if they are on the clock portion of the screen. The LED works using the timer compare interrupt in order to allow for the LED to blink independently from the other processes present. If delay was used instead of the LED, this would cause the other parts of the system to pause while the LED is blinking, in this way it allows for the program to work concurrently.
-
+<br>
+<br>
 <p align="center">
 <img width="400" src="https://raw.githubusercontent.com/tyrone890123/Weather-Prediction-Network-Utilizing-Genetic-Programming-and-Arduino/main/Assets/Pseudocode.png"> 
 </p>

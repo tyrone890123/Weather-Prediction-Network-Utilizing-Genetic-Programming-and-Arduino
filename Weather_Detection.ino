@@ -82,18 +82,21 @@ void loop()
       if(tick>=1000){
         if(ctr%2==0){
           digitalWrite(ledPin, HIGH);  
+          
         }else{
           digitalWrite(ledPin, LOW);
+          
         }
         ctr++;
+        
       }
     }else{
       start=0;
       digitalWrite(ledPin, LOW);
+      
     }
   }
 
-  
   if(screen==1){ //dht11 screen
     lcd.clear();
     lcd.setCursor(0, 0);  
@@ -102,13 +105,12 @@ void loop()
     lcd.print("C");
     lcd.print("  S: ");
     lcd.print(potVal);
-
     lcd.setCursor(0, 1);  
     lcd.print("H: ");
     lcd.print(humi);      
     lcd.print("%");
-
     delay(2000);
+    
   }else if(screen==2){ //rtc screen
      lcd.clear();
      myRTC.updateTime();
@@ -127,9 +129,11 @@ void loop()
      lcd.print(":");
      lcd.print(myRTC.seconds);
      delay(1000);
+    
   }
 }
 
 ISR(TIMER2_COMPA_vect){    
   tick++;
+  
 }

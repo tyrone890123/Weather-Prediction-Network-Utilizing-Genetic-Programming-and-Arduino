@@ -46,7 +46,6 @@ The microprocessor to be used in the development of the system is the Arduino Un
 
 The block diagram of the system can be seen below, the heart of the system is the Arduino Uno, in which the inputs to the system are from the DHT11 sensor and the DS1302 RTC module, the user can input into the system through the button switch and the potentiometer. The outputs of the system can be seen in the form of the LED and I2C LCD components.
 <br>
-<br>
 <p align="center">
 <img width="400" src="https://raw.githubusercontent.com/tyrone890123/Weather-Prediction-Network-Utilizing-Genetic-Programming-and-Arduino/main/Assets/Diagram.png"> 
 </p>

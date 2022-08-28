@@ -36,6 +36,7 @@ Being on the receiving end of an unexpected rainfall is oftentimes challenging a
 <h2 id="libs">Libraries Used</h2>
 The microprocessor to be used in the development of the system is the Arduino Uno, this allows for the necessary number of ports for each of the components that are to be used in the system; furthermore, allowing for analog to digital conversion, as well as timer interrupts which are necessary to the functionality of the circuit. 
 <br>
+
  - LiquicCrystal_I2C
  - virtuabotixRTC.h
  - DHT.h

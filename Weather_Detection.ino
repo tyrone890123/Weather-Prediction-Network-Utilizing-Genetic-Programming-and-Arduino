@@ -58,7 +58,7 @@ void loop()
     screen = 2;
   }
 
-  if((humi>=65+potVal)&&(tempC<=32)){
+  if((humi>=76+potVal)&&(tempC<=31)){
     if(start==0){
       tick=0;
       ctr=0;

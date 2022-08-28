@@ -1,7 +1,9 @@
+//libraries used
 #include <LiquidCrystal_I2C.h>
 #include <virtuabotixRTC.h> 
-#include <LiquidCrystal_I2C.h>
 #include "DHT.h"
+
+//definitions
 #define DHTPIN 4
 #define DHTTYPE DHT11
 #define buttonPin1 2
@@ -11,9 +13,12 @@
 #define dat 6
 #define rst 7
 
+//pin mapping of components 
 LiquidCrystal_I2C lcd(0x27, 16, 2);  
 virtuabotixRTC myRTC(clk, dat, rst);
 DHT dht(DHTPIN, DHTTYPE);
+
+//variable initialization
 int buttonState1 = 0;         
 int buttonState2 = 0;
 int screen = 1;
@@ -23,16 +28,19 @@ int start = 0;
 
 void setup()
 {
+  //initializations
   dht.begin();     
   lcd.init();      
   lcd.backlight();
   myRTC.setDS1302Time(00, 5, 12, 5, 7, 4, 2022);
  
+  //timer setup
   TIMSK2|=(1<<OCIE2A); 
   TCCR2B|=(1<<CS22);
   sei(); 
   OCR2A=0x0F9; 
 
+  //port setup
   pinMode(A0, INPUT);
   pinMode(buttonPin1, INPUT);
   pinMode(buttonPin2, INPUT);
@@ -41,23 +49,25 @@ void setup()
 
 void loop()
 {
-
+  //get values
   int potVal;
   potVal = analogRead(A0);
   potVal = map(potVal, 0, 1023, 0, 5);
- 
   float humi  = dht.readHumidity();    
   float tempC = dht.readTemperature();
  
+  //get button presses
   buttonState1 = digitalRead(buttonPin1);
   buttonState2 = digitalRead(buttonPin2);
  
+  //screen
   if(buttonState1 == HIGH){
     screen = 1;
   }else if(buttonState2 == HIGH){
     screen = 2;
   }
 
+  //threshold
   if((humi>=76+potVal)&&(tempC<=31)){
     if(start==0){
       tick=0;
@@ -66,6 +76,7 @@ void loop()
     }
   }
 
+  //led blinker
   if(start==1){
     if(ctr<10){
       if(tick>=1000){
@@ -82,9 +93,9 @@ void loop()
     }
   }
 
-  if(screen==1){
+  
+  if(screen==1){ //dht11 screen
     lcd.clear();
-    // check if any reads failed
     lcd.setCursor(0, 0);  
     lcd.print("T: ");
     lcd.print(tempC);    
@@ -98,7 +109,7 @@ void loop()
     lcd.print("%");
 
     delay(2000);
-  }else if(screen==2){
+  }else if(screen==2){ //rtc screen
      lcd.clear();
      myRTC.updateTime();
      lcd.setCursor(0,0);
